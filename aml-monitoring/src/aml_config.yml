@@ -1,0 +1,19 @@
+experiment:
+  name: aml-monitoring-experiment
+compute:
+  target: cpu-cluster
+script:
+  path: train_with_monitoring.py
+environment:
+  docker:
+    enabled: true
+    base_image: mcr.microsoft.com/azureml/base:latest
+  python:
+    user_managed_dependencies: false
+    conda_dependencies:
+      dependencies:
+        - python=3.8
+        - pip
+        - pip:
+            - azureml-core
+            - pytest
